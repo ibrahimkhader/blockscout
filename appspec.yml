@@ -18,7 +18,7 @@ hooks:
 
   AfterInstall:
       - location: scripts/pre_start.sh
-        timeout: 600
+        timeout: 1000
         runas: root
 
   ApplicationStart:
