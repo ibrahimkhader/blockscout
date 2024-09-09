@@ -1,27 +1,7 @@
-version: 0.0
-os: linux
-files:
-  - source: /
-    destination: /var/app
-file_exists_behavior: OVERWRITE
-permissions:
-  - object: /var/app
-    pattern: "**"
-    owner: ubuntu
-    group: ubuntu
-
-hooks:
-  ApplicationStop:
-      - location: scripts/stop.sh
-        timeout: 300
-        runas: root
-
-  AfterInstall:
-      - location: scripts/pre_start.sh
-        timeout: 1000
-        runas: root
-
-  ApplicationStart:
-      - location: scripts/start.sh
-        timeout: 600
-        runas: root
+#!/bin/bash
+# Run docker compose
+cd /var/app
+echo starting docker compose microservices
+docker-compose -f ./docker-compose/microservices.yml up -d
+echo starting server
+mix phx.server
