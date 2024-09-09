@@ -18,14 +18,15 @@ source .env
 # Application Compiling
 echo compiling the application
 mix compile
+#mix do ecto.create, ecto.migrate
 
 # Installing Node.JS dependencies
-echo installing nodejs dependencies
-cd apps/block_scout_web/assets; npm install && node_modules/webpack/bin/webpack.js --mode production; cd -
-cd apps/explorer && npm install; cd -
+#echo installing nodejs dependencies
+#cd apps/block_scout_web/assets && npm install && node_modules/webpack/bin/webpack.js --mode production && cd -
+#cd apps/explorer && npm install && cd -
 
 # Build static assets for deployment
-echo Build static assets for deployment
-mix phx.digest
-echo enabling HTTPS
-cd apps/block_scout_web; mix phx.gen.cert blockchain-backend-server blockchain.orbitcosmos.com; cd -
+#echo Build static assets for deployment
+#mix phx.digest
+#echo enabling HTTPS
+#cd apps/block_scout_web; mix phx.gen.cert blockchain-backend-server blockchain.orbitcosmos.com && cd -
