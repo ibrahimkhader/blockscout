@@ -4,6 +4,12 @@ files:
 - source: /
     destination: /var/app
 file_exists_behavior: OVERWRITE
+permissions:
+  - object: /var/app
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
 hooks:
 ApplicationStop:
     - location: scripts/stop.sh
@@ -12,10 +18,10 @@ ApplicationStop:
 
 AfterInstall:
     - location: scripts/pre_start.sh
-      timeout: 300
+      timeout: 600
       runas: root
 
 ApplicationStart:
     - location: scripts/start.sh
-      timeout: 300
+      timeout: 600
       runas: root
